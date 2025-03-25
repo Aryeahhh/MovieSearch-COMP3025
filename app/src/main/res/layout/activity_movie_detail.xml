@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="#F5F5F5">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Poster Image -->
+            <ImageView
+                android:id="@+id/imagePoster"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitCenter"
+                android:background="@android:color/darker_gray"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <!-- Metadata Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/textYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:text=" • "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/darker_gray"/>
+
+                <TextView
+                    android:id="@+id/textRuntime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <!-- Optional Fields -->
+            <TextView
+                android:id="@+id/textRated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/textReleased"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="4dp"/>
+
+            <!-- Rating -->
+            <TextView
+                android:id="@+id/textRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Details Sections -->
+            <TextView
+                android:id="@+id/textGenre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"/>
+
+            <TextView
+                android:id="@+id/textDirector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/textWriter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:id="@+id/textActors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"/>
+
+            <!-- Plot -->
+            <TextView
+                android:id="@+id/textPlot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"
+                android:lineSpacingMultiplier="1.2"/>
+
+            <!-- Production -->
+            <TextView
+                android:id="@+id/textProduction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                android:textStyle="italic"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
