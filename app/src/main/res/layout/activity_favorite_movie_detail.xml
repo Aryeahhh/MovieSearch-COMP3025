@@ -137,15 +137,23 @@
                 android:textSize="16sp"
                 android:layout_marginTop="8dp"/>
 
-            <!-- Plot -->
-            <TextView
+            <!-- Plot (Editable) -->
+            <EditText
                 android:id="@+id/textPlot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:layout_marginTop="16dp"
-                android:lineSpacingMultiplier="1.2"/>
+                android:lineSpacingMultiplier="1.2"
+                android:hint="Enter plot description"
+                android:background="@android:color/white"
+                android:gravity="top|start"
+                android:minHeight="100dp"
+                android:importantForAccessibility="yes"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:padding="8dp"/>
 
             <!-- Production -->
             <TextView
@@ -156,13 +164,24 @@
                 android:textSize="14sp"
                 android:layout_marginTop="16dp"
                 android:textStyle="italic"/>
+
+            <!-- Update and Remove Buttons -->
             <Button
-                android:id="@+id/btnAddToFavorites"
+                android:id="@+id/btnUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add to Favorites"
+                android:text="Update Plot"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"/>
+
+            <Button
+                android:id="@+id/btnRemove"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remove from Favorites"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"/>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

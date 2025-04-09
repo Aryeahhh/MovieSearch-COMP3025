@@ -2,24 +2,34 @@ package com.example.moviesearch.View;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
+import com.example.moviesearch.Model.Movie;
 import com.example.moviesearch.ViewModel.MovieViewModel;
 import com.example.moviesearch.databinding.ActivityMovieDetailBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MovieDetailActivity extends AppCompatActivity {
     private ActivityMovieDetailBinding binding;
     private MovieViewModel movieViewModel;
+    private FirebaseFirestore firestore;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMovieDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Initialize Firebase
+        firestore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         // Initialize ViewModel
         movieViewModel = new ViewModelProvider(this).get(MovieViewModel.class);
@@ -35,6 +45,9 @@ public class MovieDetailActivity extends AppCompatActivity {
             Toast.makeText(this, "No movie selected", Toast.LENGTH_SHORT).show();
             finish();
         }
+
+        // Set up Add to Favorites button click listener
+        binding.btnAddToFavorites.setOnClickListener(v -> addMovieToFavorites());
     }
 
     private void setupObservers() {
@@ -105,5 +118,25 @@ public class MovieDetailActivity extends AppCompatActivity {
 
     private String getSafeString(String value) {
         return value != null ? value : "N/A";
+    }
+
+    private void addMovieToFavorites() {
+        Movie movie = movieViewModel.getMovieDetails().getValue();
+        if (movie != null && auth.getCurrentUser() != null) {
+            String userId = auth.getCurrentUser().getUid();
+            firestore.collection("favorites")
+                    .document(userId)
+                    .collection("movies")
+                    .document(movie.getImdbID())
+                    .set(movie)
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(this, "Added to favorites", Toast.LENGTH_SHORT).show();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, "Failed to add to favorites", Toast.LENGTH_SHORT).show();
+                    });
+        } else {
+            Toast.makeText(this, "You need to be logged in to add favorites", Toast.LENGTH_SHORT).show();
+        }
     }
 }

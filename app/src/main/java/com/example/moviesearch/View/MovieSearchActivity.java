@@ -2,6 +2,7 @@ package com.example.moviesearch.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,18 @@ public class MovieSearchActivity extends AppCompatActivity {
         setupRecyclerView();
         setupObservers();
         setupSearchButton();
+
+        // Handling the Bottom Navigation Buttons
+        binding.buttonSearchBottom.setOnClickListener(v -> {
+            // Stay in the current activity (search activity)
+            Toast.makeText(this, "Already in Search", Toast.LENGTH_SHORT).show();
+        });
+
+        binding.buttonFavoritesBottom.setOnClickListener(v -> {
+            // Switch to Favorites Activity
+            Intent intent = new Intent(MovieSearchActivity.this, FavoritesActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void setupRecyclerView() {
